@@ -1,5 +1,4 @@
 import React from 'react';
-import './Header.css';
 import styled from 'styled-components';
 import { Search }  from  '@styled-icons/boxicons-regular/Search';
 import{ Map }  from '@styled-icons/boxicons-regular/Map';

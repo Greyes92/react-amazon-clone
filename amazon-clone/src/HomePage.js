@@ -1,14 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import Banner from './Components/Banner';
+import ProductItem from './Components/ProductItem';
 
 function HomePage() {
   return (
     <HomeContainer>
-      <Banner >
+      <Banner />
 
-      </Banner>
       <Content>
-        stuff
+        <ProductItem />
+        <ProductItem />
+        <ProductItem />
+        <ProductItem />
       </Content>
     </HomeContainer>
   )
@@ -19,18 +23,15 @@ export default HomePage;
 const HomeContainer = styled.div`
   max-width: 1500px;
   margin: 0 auto;
+  flex-grow: 1;
 
-`
-
-const Banner = styled.div`
-  background-image: url('https://m.media-amazon.com/images/I/71B1mwrQ4NL._SX3000_.jpg');
-  min-height: 600px;
-  background-position: center;
-  background-size: cover;
-  mask-image: linear-gradient(to bottom, rgba( 0, 0, 0, 1), rgba(0, 0, 0, 1), transparent);
 `
 
 const Content = styled.div`
-  background-color: white;
-  margin-top: -350px;
+  margin-top: -550px;
+  padding-left: 10px;
+  padding-right: 10px;
+  z-index: 100px;
+  display: flex;
+  flex-wrap: wrap;
 `
