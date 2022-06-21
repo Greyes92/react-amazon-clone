@@ -33,7 +33,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header />
+        <Header cartItems={cartItems}/>
 
         <Routes>
           <Route path='/searchresults' element={<SearchResultsPage />}></Route>

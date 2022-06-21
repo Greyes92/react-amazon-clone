@@ -7,8 +7,18 @@ import { Link } from 'react-router-dom';
 
 
 
-function Header() {
+function Header({ cartItems }) {
 
+  const getCartCount = () => {
+    let cartItemCount = 0;
+    
+    cartItems.forEach((item) => {
+      cartItemCount += item.data.quantity
+      
+    })
+      return cartItemCount;
+  }
+  console.log(getCartCount())
   // setInput("");
   // setImageUrl("");
 
@@ -50,7 +60,7 @@ function Header() {
           <HeaderShoppingCartContainer>
               <ShoppingCartIcon />
               <CartCounterContainer>
-                <CartItemCounter>0</CartItemCounter>
+                <CartItemCounter>{getCartCount()}</CartItemCounter>
                 <UserOptionLineTwo>Cart</UserOptionLineTwo>
               </CartCounterContainer>
           </HeaderShoppingCartContainer>

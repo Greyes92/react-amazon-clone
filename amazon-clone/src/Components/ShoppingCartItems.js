@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
 import ShoppingCartItem from './ShoppingCartItem';
+import NumberFormat from 'react-number-format'
 
-function ShoppingCartItems({ cartItems }) {
+function ShoppingCartItems({ cartItems, getSubtotal, getCartCount }) {
   return (
     <Container>
          <Title>Shopping Cart</Title>
@@ -19,7 +20,17 @@ function ShoppingCartItems({ cartItems }) {
               }
                
          </ShoppingCartItemsContainer>
-         <hr/>
+         <Subtotal>
+              Subtotal ({getCartCount()} items):
+              <span>
+                    <NumberFormat 
+                     value={parseFloat(getSubtotal()).toFixed(2)} 
+                     displayType={'text'} 
+                     thousandSeparator={true} 
+                     prefix={'$'} 
+                    />
+              </span>
+          </Subtotal>
     </Container>
   )
 }
@@ -29,6 +40,7 @@ export default ShoppingCartItems;
 const Container = styled.div`
      flex: 0.76;
      padding: 20px;
+     padding-bottom: 30px;
      margin-right: 20px;
      background-color: white;
 `
@@ -46,4 +58,13 @@ const PriceTitle = styled.h5`
 
 const ShoppingCartItemsContainer = styled.div`
 
+`
+const Subtotal = styled.h3`
+     font-weight: normal;
+     display: flex;
+     justify-content: right;
+     padding-top: 5px;
+     span{
+          font-weight: bold;
+     }
 `

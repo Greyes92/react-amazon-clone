@@ -1,12 +1,26 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Star } from '@styled-icons/entypo/Star';
-import { query, getDocs, getDocFromCache, addDoc, collection, doc, getDoc, updateDoc, setDoc, where, onSnapshot, increment } from 'firebase/firestore';
+import { doc, getDoc, updateDoc, setDoc, increment } from 'firebase/firestore';
 import db from '../db/Firebase';
-import { RepeatOneSharp } from '@mui/icons-material';
+import NumberFormat from 'react-number-format'
 
 
 function ProductItem({ title, price, rating, image, id }) {
+
+  function calcRating(){
+    if(rating > 0){
+      return(
+        Array(Math.floor(rating))
+        .fill()
+        .map(rating => <StarIcon />)
+      )
+    } else {
+      return 'No User Ratings';
+    }
+  }
+  
+
 
   async function addToCart() {
     // e.preventDefault();
@@ -17,11 +31,13 @@ function ProductItem({ title, price, rating, image, id }) {
         console.log(doc.id)
         if (doc.exists()) {
           console.log("Document data:", doc.data());
+          alert(`${title} was added to your shopping cart.`)
           updateDoc(cartItemRef, {
             quantity: increment(1)
           })
         } else {
           console.log("Added to shopping cart")
+          alert(`${title} was added to your shopping cart.`)
           setDoc(cartItemRef, {
             name: title,
             image: image,
@@ -30,79 +46,26 @@ function ProductItem({ title, price, rating, image, id }) {
           })
         }
       }) 
-
-
-      // const cartItem = await addDoc(cartItemRef)
-      // .then((doc) => { 
-      //   console.log(doc.id)
-      //   if(doc.id.exists){
-      //     setDoc(collection(db, 'shoppingCartItems'), {
-      //       quantity: doc.data().quantity +1
-      //     })
-      //   } 
-      //   else {
-      //   addDoc(collection(db, 'shoppingCartItems'), {
-      //     name: title,
-      //     image: image,
-      //     price: price,
-      //     quantity: 1
-        
-      //   })
-      // }
-    
-      //   if (doc.exists) {
-      //     console.log("Document data:", doc.data());
-      //   } else {
-      //     // doc.data() will be undefined in this case
-      //     console.log("No such document!");
-      //   }
-      // });
-        // if (cartItem.exists) {
-        //   console.log("Document data:", typeof cartItem.doc.data());
-        // } else {
-        //   // doc.data() will be undefined in this case
-        //   console.log("No such document!");
-        // }
-      // if (cartItem.exists) {
-      //   console.log("Document data:", cartItem.data());
-      // } else {
-      //   // doc.data() will be undefined in this case
-      //   console.log("No such document!");
-      // }
-      // console.log(cartItem)
-    // })
-        
-    // const querySnapshot = await getDocs(collection(db, "shoppingCartItems"));
-    //   querySnapshot.forEach((doc) => {
-    //   // doc.data() is never undefined for query doc snapshots
-    //   // console.log(doc.id, " => ", doc.data());
-    //           if (doc.exists()) {
-    //       console.log("Document data:", doc.data(), doc.id);
-    //     } else {
-    //       // doc.data() will be undefined in this case
-    //       console.log("No such document!");
-    //     }
-    // });
-
-        }
-
+    }
     // setInput("");
     // setImageUrl("");
-
-
   return (
         <ProductItemContainer key={id}>
         <Title>{ title }</Title>
-        <Price>${ price }</Price>
-        <Rating> 
-          {
-            Array(Math.floor(rating))
-            .fill()
-            .map(rating => <StarIcon />)
-          }
+        <Price>
+          <NumberFormat 
+            value={parseFloat(price).toFixed(2)} 
+            displayType={'text'} 
+            thousandSeparator={true} 
+            prefix={'$'} 
+          />
+        </Price>
+        <Rating>
+          {calcRating()}
         </Rating>
         <ProductImage src={ image }></ProductImage>
         <AddToCartBtn onClick={addToCart}>Add To Cart</AddToCartBtn>
+        {/* <AddToCartBtn >Add To Cart</AddToCartBtn> */}
       </ProductItemContainer>
   )
 }

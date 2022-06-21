@@ -13,27 +13,28 @@ function HomePage() {
   const [products, setProducts] = useState([]);
 
 //From API fetch request
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const data = await fetch('https://api.scaleserp.com/search?api_key=EB2A7054AF544850A25A012791ED3920&q=games&google_domain=google.com&location=United+States&gl=us&hl=en&search_type=shopping&num=20')
-  //     const json = await data.json();
-  //     return setProducts(json.shopping_results), setLoading(false)
-  //   }
-  //   fetchData()
-  //   .catch(console.error)
-  // }, [])
-
   useEffect(() => {
-       setLoading(false)
-       const q = query(collection(db, 'products'));
-       onSnapshot(q, (snapshot) =>
-         setProducts(snapshot.docs.map((doc) => (
-            { 
-              id: doc.id, 
-              data: doc.data()
-            })))
-          );
-  }, []);
+    const fetchData = async () => {
+      const data = await fetch('https://api.scaleserp.com/search?api_key=EB2A7054AF544850A25A012791ED3920&q=clothes&google_domain=google.com&location=United+States&gl=us&hl=en&search_type=shopping&num=10')
+      const json = await data.json();
+      // console.log(json.shopping_results.id)
+      return setProducts(json.shopping_results), setLoading(false)
+    }
+    fetchData()
+    .catch(console.error)
+  }, [])
+  
+  // useEffect(() => {
+  //      setLoading(false)
+  //      const q = query(collection(db, 'products'));
+  //      onSnapshot(q, (snapshot) =>
+  //        setProducts(snapshot.docs.map((doc) => (
+  //           { 
+  //             id: doc.id, 
+  //             data: doc.data()
+  //           })))
+  //         );
+  // }, []);
 
   return (
     <HomeContainer>
@@ -41,16 +42,17 @@ function HomePage() {
 
       <Content>
       {/* FOR API USE */}
-        {/* {products.map((products) => (
+        {products.map((products) => (
+          
           <ProductItem 
-          key={products.id}
+          id={products.id}
           title={products.title} 
           price={products.price} 
           rating={products.rating} 
           image={products.image}
           />
-        ))} */}
-        {products.map((products) => (
+        ))}
+        {/* {products.map((products) => (
           <ProductItem 
           id={products.id}
           title={products.data.name} 
@@ -58,7 +60,7 @@ function HomePage() {
           rating={products.data.rating} 
           image={products.data.image}
           />
-        ))}
+        ))} */}
         
       </Content>
     </HomeContainer>
