@@ -4,10 +4,17 @@ import { Search }  from  '@styled-icons/boxicons-regular/Search';
 import{ Map }  from '@styled-icons/boxicons-regular/Map';
 import { AddShoppingCart } from '@styled-icons/material/AddShoppingCart';
 import { Link } from 'react-router-dom';
+import ResultsItems from './ResultsItems';
 
 
 
 function Header({ cartItems }) {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target.parentNode)
+    console.log('submitted')
+  }
 
   const getCartCount = () => {
     let cartItemCount = 0;
@@ -18,10 +25,8 @@ function Header({ cartItems }) {
     })
       return cartItemCount;
   }
-  console.log(getCartCount())
   // setInput("");
   // setImageUrl("");
-
   return (
     <div>
       <HeaderContainer>
@@ -39,13 +44,18 @@ function Header({ cartItems }) {
 
          <HeaderSearchContainer>
            <HeaderSearchInput type='input'/>
-           <Link to='/SearchResults'>
-           <SearchIconContainer>
-              <SearchIcon type='submit'/>
+          {/* //  type= 'text'
+          //  value={searchQuery}
+          //  onChange={(e) => setSearchQuery(e.target)}/> */}
+           {/* <Link to='/SearchResults' search={{${input}}} state={{proptest: 'test state'}}> */}
+           <Link to='/SearchResults' >
+           {/* <SearchIconContainer onClick={handleSubmit} type='submit'> */}
+           <SearchIconContainer type='submit'>
+              <SearchIcon  />  
            </SearchIconContainer>
+           
            </Link> 
          </HeaderSearchContainer>
-
          <HeaderUserOptionsContainer>
             <UserOptionLineOne>Hello, Gibran</UserOptionLineOne> 
             <UserOptionLineTwo>Accounts & Lists</UserOptionLineTwo>
@@ -132,6 +142,7 @@ const HeaderSearchInput = styled.input`
   font-size: 17px;
   border: 0;
   padding: 0;
+  z-index: 100;
   :focus {
     outline: none;
   }

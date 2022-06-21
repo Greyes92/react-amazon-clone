@@ -13,6 +13,8 @@ function HomePage() {
   const [products, setProducts] = useState([]);
 
 //From API fetch request
+
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch('https://api.scaleserp.com/search?api_key=EB2A7054AF544850A25A012791ED3920&q=clothes&google_domain=google.com&location=United+States&gl=us&hl=en&search_type=shopping&num=10')
@@ -23,6 +25,8 @@ function HomePage() {
     fetchData()
     .catch(console.error)
   }, [])
+
+
   
   // useEffect(() => {
   //      setLoading(false)
@@ -35,6 +39,8 @@ function HomePage() {
   //           })))
   //         );
   // }, []);
+
+
 
   return (
     <HomeContainer>

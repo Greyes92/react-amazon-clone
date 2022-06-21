@@ -17,6 +17,8 @@ function App() {
     //     .then((data) => console.log(data))
   const [ loading, setLoading ] = useState(true);      
   const [ cartItems, setCartItems ] = useState([]);
+  const [ results, setResults ] = useState([]);
+  const [ searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     setLoading(false)
@@ -33,12 +35,12 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header cartItems={cartItems}/>
+        <Header cartItems={cartItems} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
 
         <Routes>
-          <Route path='/searchresults' element={<SearchResultsPage />}></Route>
+          <Route path='/searchresults' element={<SearchResultsPage results={results}/>}></Route>
           <Route path='/cart' element={<ShoppingCartPage cartItems={cartItems}/>} />
-          <Route path='/' element={<HomePage />} />
+          <Route path='/' element={<HomePage searchQuery={searchQuery}/>} />
         </Routes>
 
       </div>
