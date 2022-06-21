@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom';
 
 function Header() {
 
+  // setInput("");
+  // setImageUrl("");
+
   return (
     <div>
       <HeaderContainer>
@@ -26,9 +29,11 @@ function Header() {
 
          <HeaderSearchContainer>
            <HeaderSearchInput type='input'/>
+           <Link to='/SearchResults'>
            <SearchIconContainer>
-              <SearchIcon />
+              <SearchIcon type='submit'/>
            </SearchIconContainer>
+           </Link> 
          </HeaderSearchContainer>
 
          <HeaderUserOptionsContainer>
@@ -45,7 +50,7 @@ function Header() {
           <HeaderShoppingCartContainer>
               <ShoppingCartIcon />
               <CartCounterContainer>
-                <CartCounter>0</CartCounter>
+                <CartItemCounter>0</CartItemCounter>
                 <UserOptionLineTwo>Cart</UserOptionLineTwo>
               </CartCounterContainer>
           </HeaderShoppingCartContainer>
@@ -95,7 +100,7 @@ const HeaderAddressLineTwo = styled.div`
   font-weight: bold;
   font-size: 14px;
 `
-const HeaderSearchContainer = styled.div`
+const HeaderSearchContainer = styled.form`
   display:flex;
   flex-grow: 1;
   height: 40px;
@@ -114,7 +119,7 @@ const HeaderSearchContainer = styled.div`
 
 const HeaderSearchInput = styled.input`
   flex-grow: 1;
-  font-size: 15px;
+  font-size: 17px;
   border: 0;
   padding: 0;
   :focus {
@@ -130,6 +135,7 @@ const SearchIconContainer = styled.div`
   justify-content: center;
   align-items: center;
   border: 0;
+  height: 40px;
 `
 
 const SearchIcon = styled(Search)`
@@ -178,7 +184,7 @@ const CartCounterContainer = styled.div`
   margin-right: 25px;
 `
 
-const CartCounter = styled.div`
+const CartItemCounter = styled.div`
   text-align: center;
   font-size: 18px;
   color: orange;
