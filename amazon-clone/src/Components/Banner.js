@@ -29,6 +29,7 @@ export default Banner;
 
 const BannerContainer = styled.div`
      z-index: 1;
+
 `
 
 

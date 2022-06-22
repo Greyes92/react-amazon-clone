@@ -4,15 +4,19 @@ import { Search }  from  '@styled-icons/boxicons-regular/Search';
 import{ Map }  from '@styled-icons/boxicons-regular/Map';
 import { AddShoppingCart } from '@styled-icons/material/AddShoppingCart';
 import { Link } from 'react-router-dom';
-import ResultsItems from './ResultsItems';
+// import ResultsItems from './ResultsItems';
+import { useState } from 'react';
 
 
 
-function Header({ cartItems }) {
+function Header({ cartItems, searchQuery, setSearchQuery }) {
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.parentNode)
+  
+    console.log(e.target.form)
     console.log('submitted')
   }
 
@@ -43,18 +47,19 @@ function Header({ cartItems }) {
          </HeaderSelectAddress>
 
          <HeaderSearchContainer>
-           <HeaderSearchInput type='input'/>
-          {/* //  type= 'text'
-          //  value={searchQuery}
-          //  onChange={(e) => setSearchQuery(e.target)}/> */}
-           {/* <Link to='/SearchResults' search={{${input}}} state={{proptest: 'test state'}}> */}
-           <Link to='/SearchResults' >
-           {/* <SearchIconContainer onClick={handleSubmit} type='submit'> */}
+           <HeaderSearchInput  
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+           />
+           {/* <SearchIconContainer type='submit' onClick={handleSubmit}> */}
+            <button type='submit'onClick={handleSubmit} > hidden submit</button>
            <SearchIconContainer type='submit'>
-              <SearchIcon  />  
+           <Link to='/searchresults'>
+              <SearchIcon /> 
+            </Link> 
            </SearchIconContainer>
-           
-           </Link> 
+                    
+          
          </HeaderSearchContainer>
          <HeaderUserOptionsContainer>
             <UserOptionLineOne>Hello, Gibran</UserOptionLineOne> 
@@ -87,12 +92,15 @@ const HeaderContainer = styled.div`
   display:flex;
   flex-direction: row;
   justify-content: space-between;
-  height:65px;
+  height:60px;
   width: 100%;
   background-color: #0F1111;
   align-items: center;
   color: white;
   font-size: 13px;
+  button{
+    display: none;
+  }
 
 `
 
@@ -111,6 +119,9 @@ const HeaderLogo = styled.div`
 `
 const HeaderSelectAddress = styled.div`
 padding-right: 15px;
+:hover{
+  border: 1px solid white;
+}
 `
 const HeaderAddressLineOne = styled.div`
   color: grey;
@@ -162,6 +173,10 @@ const SearchIconContainer = styled.div`
 const SearchIcon = styled(Search)`
   color: black;
   height: 20px;
+  svg{
+    height: 20px;
+    width: 20px;
+  }
 `
 
 const MapIcon = styled(Map)`
@@ -171,6 +186,9 @@ const MapIcon = styled(Map)`
 `
 const HeaderUserOptionsContainer = styled.div`
   padding: 15px;
+  :hover {
+    border: 1px solid white;
+  }
 
 `
 const UserOptionLineOne = styled.div`

@@ -4,8 +4,8 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Banner from './Components/Banner';
 import ProductItem from './Components/ProductItem';
-import db from './db/Firebase';
-import { collection, onSnapshot, query } from 'firebase/firestore';
+// import db from './db/Firebase';
+// import { collection, onSnapshot, query } from 'firebase/firestore';
 
 
 function HomePage() {
@@ -13,14 +13,13 @@ function HomePage() {
   const [products, setProducts] = useState([]);
 
 //From API fetch request
-
-
   useEffect(() => {
+    console.log('i fired once')
     const fetchData = async () => {
-      const data = await fetch('https://api.scaleserp.com/search?api_key=EB2A7054AF544850A25A012791ED3920&q=clothes&google_domain=google.com&location=United+States&gl=us&hl=en&search_type=shopping&num=10')
+      const data = await fetch('https://api.scaleserp.com/search?api_key=EB2A7054AF544850A25A012791ED3920&q=trending+items&shopping_condition=new&google_domain=google.com&location=United+States&gl=us&hl=en&search_type=shopping&sort_by=review_score&num=20')
       const json = await data.json();
       // console.log(json.shopping_results.id)
-      return setProducts(json.shopping_results), setLoading(false)
+      return setProducts(json.shopping_results) & setLoading(false)
     }
     fetchData()
     .catch(console.error)
@@ -40,7 +39,19 @@ function HomePage() {
   //         );
   // }, []);
 
+  if(loading === true){
+    console.log('loading')
+    
+    return( 
+      <HomeContainer>
+        <Banner />
+        <LoadingMessage>
+          <img src={'https://media0.giphy.com/media/hW9umw9Iu17ODEEfCQ/200w.gif?cid=82a1493bhyg2zh0qb9ri9ds52ydl39prgmsf89mx682hw0sl&rid=200w.gif&ct=s'} />
+        </LoadingMessage>
+      </HomeContainer>
+    )
 
+  } else {
 
   return (
     <HomeContainer>
@@ -72,6 +83,7 @@ function HomePage() {
     </HomeContainer>
   )
 }
+}
 
 export default HomePage;
 
@@ -89,4 +101,15 @@ const Content = styled.div`
   z-index: 100px;
   display: flex;
   flex-wrap: wrap;
+`
+const LoadingMessage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -500px;
+  
+  img{
+    height: 300px;
+    z-index: 100;
+  }
 `

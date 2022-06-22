@@ -7,6 +7,8 @@ import db from './db/Firebase'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { collection, onSnapshot, query } from 'firebase/firestore';
+import NavBar from './Components/NavBar';
+import Login from './Components/Login';
 
 
 function App() {
@@ -18,7 +20,7 @@ function App() {
   const [ loading, setLoading ] = useState(true);      
   const [ cartItems, setCartItems ] = useState([]);
   const [ results, setResults ] = useState([]);
-  const [ searchQuery, setSearchQuery] = useState('')
+  const [ searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     setLoading(false)
@@ -36,9 +38,10 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header cartItems={cartItems} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
-
+        <NavBar />
         <Routes>
-          <Route path='/searchresults' element={<SearchResultsPage results={results}/>}></Route>
+          <Route path='/loginpage' element={<Login />}/>
+          <Route path='/searchresults' element={<SearchResultsPage searchQuery={searchQuery} results={results}/>} />
           <Route path='/cart' element={<ShoppingCartPage cartItems={cartItems}/>} />
           <Route path='/' element={<HomePage searchQuery={searchQuery}/>} />
         </Routes>

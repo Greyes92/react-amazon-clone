@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ResultsCartItem from './ResultsCartItem';
 
 function ResultsItems({ results }) {
-     console.log(results)
+     // console.log(results)
   return (
     <Container>
           <Title>RESULTS</Title>
@@ -17,7 +17,8 @@ function ResultsItems({ results }) {
                      price={item.price} 
                      rating={item.rating} 
                      image={item.image}
-                     />
+                     >
+                     </ResultsCartItem>
                    ))
               }
                
@@ -42,13 +43,13 @@ const Title = styled.h1`
      font-weight: normal;
      font-size: 25px;
 `
-const PriceTitle = styled.h5`
-     font-size: 15px;
-     color: #565959;
-     font-weight: normal;
-     display: flex;
-     justify-content: right;
-`
+// const PriceTitle = styled.h5`
+//      font-size: 15px;
+//      color: #565959;
+//      font-weight: normal;
+//      display: flex;
+//      justify-content: right;
+// `
 
 
 const ResultsItemsContainer = styled.div`

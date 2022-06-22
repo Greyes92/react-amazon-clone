@@ -22,7 +22,7 @@ function ResultsCartItem({ title, price, rating, image, id }) {
         async function addToCart() {
           // e.preventDefault();
             
-            const cartItemRef = doc(db, 'shoppingCartItems', `${id}`)
+            const cartItemRef = doc(db, 'shoppingCartItems', `${id}}`)
             const cartItem = await getDoc(cartItemRef)
             .then((doc) => {
               console.log(doc.id)
@@ -68,7 +68,7 @@ function ResultsCartItem({ title, price, rating, image, id }) {
                          </ItemPrice>
                           <h5 className='inStock'>In Stock</h5>
                           <h5 className='eligible'>
-                               <img src='https://m.media-amazon.com/images/G/01/prime/marketing/slashPrime/amazon-prime-delivery-checkmark._CB659998231_.png'/>
+                               <img src='https://m.media-amazon.com/images/G/01/prime/marketing/slashPrime/amazon-prime-delivery-checkmark._CB659998231_.png' alt=''/>
                                  Get it as soon as
                                <span className='tomorrow'> Tomorrow </span> 
                           </h5>
@@ -170,6 +170,7 @@ const AddToCartBtn = styled.button`
   border-radius: 2px;
   padding: 0;
   align-self: center;
+  margin-bottom: 10px;
   :hover{
     cursor: pointer;
   }

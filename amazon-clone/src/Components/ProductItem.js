@@ -50,7 +50,7 @@ function ProductItem({ title, price, rating, image, id }) {
     // setInput("");
     // setImageUrl("");
   return (
-        <ProductItemContainer key={id}>
+        <ProductItemContainer key={id} id={id}>
         <Title>{ title }</Title>
         <Price>
           <NumberFormat 
@@ -83,7 +83,9 @@ const ProductItemContainer = styled.div`
   flex: 1;
 `
 
-const Title = styled.span``
+const Title = styled.span`
+  overflow: hidden;
+`
 
 const Price = styled.span`
   font-weight: 500;
@@ -93,9 +95,11 @@ const Price = styled.span`
 const Rating = styled.div``
 
 const ProductImage = styled.img`
+  min-height: 250px;
   max-height: 250px;
   /* max-width: 200px; */
   object-fit: contain;
+  margin-top: 5px;
 `
 
 const AddToCartBtn = styled.button`
@@ -107,6 +111,7 @@ const AddToCartBtn = styled.button`
   border-radius: 2px;
   padding: 0;
   align-self: center;
+  justify-content: center;
   :hover{
     cursor: pointer;
   }
