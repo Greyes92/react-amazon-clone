@@ -5,6 +5,8 @@ import ShoppingCartTotal from './ShoppingCartTotal';
 
 function ShoppingCartPage({ cartItems }) {
 
+  console.log(cartItems)
+
   const getSubtotal = () => {
     let subtotal = 0;
     cartItems.forEach((item) => {

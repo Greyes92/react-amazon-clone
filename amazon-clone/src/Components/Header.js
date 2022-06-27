@@ -4,21 +4,39 @@ import { Search }  from  '@styled-icons/boxicons-regular/Search';
 import{ Map }  from '@styled-icons/boxicons-regular/Map';
 import { AddShoppingCart } from '@styled-icons/material/AddShoppingCart';
 import { Link } from 'react-router-dom';
-// import ResultsItems from './ResultsItems';
 import { useState } from 'react';
+// import ResultsItems from './ResultsItems';
+// import { useState } from 'react';
 
 
 
 function Header({ cartItems, searchQuery, setSearchQuery }) {
 
+  const [input, setInput] = useState('')
 
-
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
     e.preventDefault();
-  
-    console.log(e.target.form)
-    console.log('submitted')
+    // setSearchQuery(e.target.value); original
+    setSearchQuery(e.target[0].value);
+    // setSearchQuery(e.target.parentElement.parentNode.parentNode[0].value);
   }
+
+  const handleClick = (e) => {
+    setSearchQuery(e.target.parentElement.parentNode.parentNode[0].value);
+  }
+
+  // const handleSubmit = event => {
+  //   // 👇️ prevent page refresh
+  //   event.preventDefault();
+  //   console.log('form submitted ✅');
+  // };
+
+  // const handleInput = (e) => {
+  //   e.preventDefault();
+  //   // setSearchQuery('');
+  //   // console.log(e)
+  //   console.log(e.target.parentElement.parentNode.parentNode[0].value)
+  // }
 
   const getCartCount = () => {
     let cartItemCount = 0;
@@ -46,23 +64,22 @@ function Header({ cartItems, searchQuery, setSearchQuery }) {
            <HeaderAddressLineTwo> Select your address</HeaderAddressLineTwo>
          </HeaderSelectAddress>
 
-         <HeaderSearchContainer>
-           <HeaderSearchInput  
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+         <HeaderSearchContainer onSubmit={(handleChange)}>
+           <HeaderSearchInput 
+            type='text'
+            // onClick={handleChange}
+            // onChange={handleChange}
+            // value={searchQuery}
            />
-           {/* <SearchIconContainer type='submit' onClick={handleSubmit}> */}
-            <button type='submit'onClick={handleSubmit} > hidden submit</button>
-           <SearchIconContainer type='submit'>
+            <button type='submit' > hidden submit</button>
+           <SearchIconContainer >
            <Link to='/searchresults'>
-              <SearchIcon /> 
+              <SearchIcon type='submit' onClick={handleClick}/> 
             </Link> 
            </SearchIconContainer>
-                    
-          
          </HeaderSearchContainer>
          <HeaderUserOptionsContainer>
-            <UserOptionLineOne>Hello, Gibran</UserOptionLineOne> 
+            <UserOptionLineOne>Hello, Sign in</UserOptionLineOne> 
             <UserOptionLineTwo>Accounts & Lists</UserOptionLineTwo>
          </HeaderUserOptionsContainer>
 

@@ -107,6 +107,7 @@ const LoadingMessage = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: -500px;
+  margin-bottom: 150px;
   
   img{
     height: 300px;

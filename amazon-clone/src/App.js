@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { collection, onSnapshot, query } from 'firebase/firestore';
 import NavBar from './Components/NavBar';
 import Login from './Components/Login';
+import Footer from './Components/Footer';
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
   const [ results, setResults ] = useState([]);
   const [ searchQuery, setSearchQuery] = useState('');
 
+  //pulls data dynamically from db to set the shopping cart items state 
+  //with data that has been added to the shopping cart collection
   useEffect(() => {
     setLoading(false)
     const q = query(collection(db, 'shoppingCartItems'));
@@ -41,11 +44,11 @@ function App() {
         <NavBar />
         <Routes>
           <Route path='/loginpage' element={<Login />}/>
-          <Route path='/searchresults' element={<SearchResultsPage searchQuery={searchQuery} results={results}/>} />
+          <Route path='/searchresults' element={<SearchResultsPage searchQuery={searchQuery} setSearchQuery={setSearchQuery} results={results} setResults={setResults}/>} />
           <Route path='/cart' element={<ShoppingCartPage cartItems={cartItems}/>} />
           <Route path='/' element={<HomePage searchQuery={searchQuery}/>} />
         </Routes>
-
+        <Footer />
       </div>
     </BrowserRouter>
   );

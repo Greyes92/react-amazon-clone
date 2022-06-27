@@ -4,20 +4,27 @@ import ResultsItems from './ResultsItems';
 import { useLocation } from 'react-router-dom'
 
 
-function SearchResultsPage({ searchQuery }) {
+function SearchResultsPage({ searchQuery, setSearchQuery, results, setResults }) {
 
   const [loading, setLoading] = useState(true);
-  const [results, setResults] = useState([]);
 
   useEffect(() => {
+    setLoading(true)
     console.log('i fired once')
-    const fetchData = async () => {
-      const data = await fetch(`https://api.scaleserp.com/search?api_key=EB2A7054AF544850A25A012791ED3920&q=${searchQuery}&google_domain=google.com&location=United+States&gl=us&hl=en&search_type=shopping&num=20`)
-      const json = await data.json();
-      return setResults(json.shopping_results) & setLoading(false)
-    }
     fetchData()
-  },[])
+  },[searchQuery])
+
+  const fetchData = async () => {
+    // setSearchQuery(JSON.parse(window.localStorage.getItem('searchQuery')))
+    await fetch(`https://api.scaleserp.com/search?api_key=EB2A7054AF544850A25A012791ED3920&q=${searchQuery}&google_domain=google.com&location=United+States&gl=us&hl=en&search_type=shopping&num=20`)
+    .then((res) => res.json())
+    .then((data) => setResults(data.shopping_results))
+    .catch((error) => console.log(error))
+    // const json = await data.json();
+    // return setResults(json.shopping_results) & 
+    console.log(results)
+    setLoading(false)
+  }
 
   if(loading === true){
     console.log('loading')

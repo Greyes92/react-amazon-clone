@@ -22,7 +22,7 @@ function ResultsCartItem({ title, price, rating, image, id }) {
         async function addToCart() {
           // e.preventDefault();
             
-            const cartItemRef = doc(db, 'shoppingCartItems', `${id}}`)
+            const cartItemRef = doc(db, 'shoppingCartItems', `${id}`)
             const cartItem = await getDoc(cartItemRef)
             .then((doc) => {
               console.log(doc.id)
