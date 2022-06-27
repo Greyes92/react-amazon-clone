@@ -101,6 +101,7 @@ const Content = styled.div`
   z-index: 100px;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 25px;
 `
 const LoadingMessage = styled.div`
   display: flex;

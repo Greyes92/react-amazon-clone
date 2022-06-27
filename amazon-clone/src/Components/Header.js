@@ -79,7 +79,9 @@ function Header({ cartItems, searchQuery, setSearchQuery }) {
            </SearchIconContainer>
          </HeaderSearchContainer>
          <HeaderUserOptionsContainer>
-            <UserOptionLineOne>Hello, Sign in</UserOptionLineOne> 
+           <Link to='/loginpage'>
+            <UserOptionLineOne>Hello, Sign in</UserOptionLineOne>
+           </Link>
             <UserOptionLineTwo>Accounts & Lists</UserOptionLineTwo>
          </HeaderUserOptionsContainer>
 
@@ -117,6 +119,10 @@ const HeaderContainer = styled.div`
   font-size: 13px;
   button{
     display: none;
+  }
+  a{
+    color: white;
+    text-decoration: none;
   }
 
 `

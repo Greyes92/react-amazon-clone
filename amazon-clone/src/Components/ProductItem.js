@@ -106,9 +106,14 @@ const AddToCartBtn = styled.button`
   margin-top: 12px;
   width: 100px;
   height: 30px;
-  background-color: #f0c14b;
-  border: 2px solid #a88734;
-  border-radius: 2px;
+  /* background-color: #f0c14b;
+  border: 2px solid #a88734; */
+  border-radius: 5px;
+  background: #f0c14b;
+  border-color: #a88734 #9c7e31 #846a29;
+  background: rgb(240,193,75);
+  background: linear-gradient(0deg, rgba(240,193,75,1) 0%, rgba(240,193,75,1) 53%, rgba(255,226,155,1) 99%);
+  border: 1px solid #a88734 #9c7e31 #846a29;
   padding: 0;
   align-self: center;
   justify-content: center;

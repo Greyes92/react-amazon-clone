@@ -1,46 +1,37 @@
-# PROJECT GAME ON
+# Amazon Clone
 
-Welcome! My name is Gibran Reyes. I am a transitioning Service Member that recently separated from the US ARMY and an aspiring Full Stack Software Engineer. I am currently attending The Operation Level Up Software Engineering Immersive/Bootcamp through Galvanize. This a project I am working on for the course and is my first Full Stack Application with CRUD functionality. It still needs a lot of work and I will continue to add more features as my knowledge and skills grow throughout the course. Game on is a video game search that utilizes and fetches data from the RAWG.IO api. I designed, styled, coded, and deployed the full application. Thank you for stopping by and checking my project out! Below I have broken down my project.
+Welcome! My name is Gibran Reyes and this is my Amazon Clone. In this build I tried to challenge myself by recreating the Amazon webpage using React. While building this clone I gained a much better understanding of React, React Hooks, React Router, functional-based components, styled components, and JavaScript. My CSS definitely improved with this build as well. As of now there are two main features that work which are the Search Feature and the Shopping Cart. The Amazon logo will bring you back to the homepage and the shopping cart icon will take you to the shopping cart page. You can click on sign in and will it take you to the sign in page but I have not added a users feature yet. This is a work in progress and I will continue to add more features in the future.
 
-Link: https://project-game-on.herokuapp.com/
+Link to deployed website: https://amaz0n-clone-mvp.web.app/
 
 ### Languages And Tools Used:
 **Front End**
 - JavaScript
-- jQuery
+- React
 - HTML
+- Styled Components
 - CSS
 
 **Back End**
-- Node.js
-- Express.js
+- Firebase
 
 **Database**
-- PostgreSQL
+- Firestore DB
 
 ### Feature 1: Search
-The main feature of Game On is the search function. You may search for a game using the search bar at the top of the page. It populate the top 20 most relevant results. In the future, I plan to add a sort/filter function and also more pages that you can look through. User's have the option to add a game to their wishlist.
+You have the ability to search for products using the Search Bar located on the Header. All items are dynamically rendered based on your search query and data is provided by the Scale Serp API which pulls it's data from Google Shopping. When clicking on the search icon it will bring you to the results page where you may make another query.
 
-### Feature 2: Users
-As of now, I do not have proper authentication as I am still learning how to properly and securely implement that into my project. Currently, Game On can create, delete and update users and store that information in a database. 
+### Feature 2: Add To Cart
+Any items that have an add to cart button may be added to your shopping cart. By clicking on the shopping cart icon on the header, it will take you to the shopping cart page. The numbers next to the shopping cart icon will dynamically change depending how many items are in the cart. In the shopping cart page you may change the quantity of the items which will then dynamically change the subtotal as well as the price of the specific item. Currently, there is no check out feature.
 
-### Feature 3: Wishlist
-After a user has created an account, they can add any game to their wishlist. Since proper authentication is not set up yet, a prompt will appear asking for a username to know which user's wishlist will add the game after the "Add To Wishlist" button has been pressed. In order to see their wishlist the user will have click to the "Wishlist" button and another prompt will appear asking for a username to know which user data will be populated. Once a game is in a user's wishlist, they can delete it.
-
-### Feature 4: Upcoming Releases
-The "Upcoming Releases" Button will show what games will be releasing within the next year. Users have the option to add a game to their wishlist.
-
-
-### Feature 5: Latest Releases
-The "Latest Releases" Button will show games that have released within the last 3 months. Users have the option to add a game to their wishlist.
 
 ### In the future I would like to add:
-- Proper User authentication
+- Proper User authentication though Google or email/password
 - Filter/sort results
 - Pages to display more results
-- Links that users can follow to the desired games' store
-- Game Trailers and screenshots
-- Possibly a comments section
+- Checkout
+- Full product pages
+- Possible DB switch to PostgreSQL
 
 
 
