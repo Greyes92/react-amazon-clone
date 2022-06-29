@@ -2,9 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 
 function Footer() {
+
+     const scrollToTop = () =>{
+          window.scrollTo({
+            top: 0, 
+            behavior: 'smooth'
+          });
+        };
+
   return (
     <FooterContainer>
-         <BackToTop>Back To Top</BackToTop>
+         <BackToTop onClick={scrollToTop}>Back To Top</BackToTop>
          <FooterNav>
               <GetToKnowUsContainer>
                     <ul> 
@@ -84,6 +92,10 @@ const BackToTop = styled.div`
      color: white;
      text-align: center;
      font-size: 13px;
+     :hover{
+          cursor: pointer;
+          text-decoration: underline;
+     }
 `
 
 const FooterNav = styled.div`

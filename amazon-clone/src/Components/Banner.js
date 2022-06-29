@@ -18,6 +18,9 @@ class Banner extends React.Component {
                 <div>
                     <img src="https://m.media-amazon.com/images/I/71fjsrxVAQL._SX3000_.jpg" alt='' />
                 </div>
+                <div>
+                    <img src="https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/cb82f0a6-4f60-4245-a0bc-2ec62d92c187.jpg" alt='' />
+                </div>
             </Carousel>
           </BannerContainer>
           

@@ -65,6 +65,66 @@ function Header({ cartItems, searchQuery, setSearchQuery }) {
          </HeaderSelectAddress>
 
          <HeaderSearchContainer onSubmit={(handleChange)}>
+           <HeaderSelect>
+             <option selected='selected'>All Departments</option>
+             <option value="">Alexa Skills</option>
+             <option value="">Amazon Devices</option>
+             <option value="">Amazon Explore</option>
+             <option value="">Amazon Pharmacy</option>
+             <option value="">Amazon Warehouse</option>
+             <option value="">Appliances</option>
+             <option value="">Apps & Games</option>
+             <option value="">Arts, Crafts & Sewing</option>
+             <option value="">Audible Books & Originals</option>
+             <option value="">Automotive Parts & Accessories</option>
+             <option value="">AWS Courses</option>
+             <option value="">Baby</option>
+             <option value="">Beauty & Personal Care</option>
+             <option value="">Books</option>
+             <option value="">CDs & Vinyl</option>
+             <option value="">Cell Phones & Accessories</option>
+             <option value="">Clothing, Shoes & Jewelry</option>
+             <option value="">Women</option>
+             <option value="">Men</option>
+             <option value="">Girls</option>
+             <option value="">Boys</option>
+             <option value="">Baby</option>
+             <option value="">Collectibles & Fine Art</option>
+             <option value="">Computers</option>
+             <option value="">Credit and Payment Cards</option>
+             <option value="">Digital Educational Resources</option>
+             <option value="">Digital Music</option>
+             <option value="">Electronics</option>
+             <option value="">Garden & Outdoor</option>
+             <option value="">Gift Cards</option>
+             <option value="">Grocery & Gourmet Foods</option>
+             <option value="">Handmade</option>
+             <option value="">Health, Houshold & Baby Care</option>
+             <option value="">Home & Business Services</option>
+             <option value="">Home & Kitchen</option>
+             <option value="">Industrial & Scientific</option>
+             <option value="">Just for Prime</option>
+             <option value="">Kindle Store</option>
+             <option value="">Luggage & Travel Gear</option>
+             <option value="">Luxury Stores</option>
+             <option value="">Magazine Subscription</option>
+             <option value="">Movies & TV</option>
+             <option value="">Musical Instruments</option>
+             <option value="">Office Products</option>
+             <option value="">Pet Supplies</option>
+             <option value="">Premium Beauty</option>
+             <option value="">Prime Video</option>
+             <option value="">Smart Home</option>
+             <option value="">Software</option>
+             <option value="">Sports & Outdoors</option>
+             <option value="">Subscribe & Save</option>
+             <option value="">Subscription Boxes</option>
+             <option value="">Tools & Home Improvement</option>
+             <option value="">Toys & Games</option>
+             <option value="">Under $10</option>
+             <option value="">Video Games</option>
+             <option value="">Whole Foods Market</option>
+           </HeaderSelect>
            <HeaderSearchInput 
             type='text'
             // onClick={handleChange}
@@ -113,7 +173,7 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   height:60px;
   width: 100%;
-  background-color: #0F1111;
+  background-color: #111922;
   align-items: center;
   color: white;
   font-size: 13px;
@@ -251,4 +311,29 @@ const CartItemCounter = styled.div`
   font-size: 18px;
   color: orange;
   font-weight: bold;
+`
+
+const HeaderSelect = styled.select`
+  width: 50px;
+  border: none;
+  padding-left: 12px;
+  color: #0f1111;
+  border-right: 1px solid lightgray;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  :hover{
+    cursor: pointer;
+  }
+  option {
+    font-weight: normal;
+    display: flex;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+    justify-content: flex-start;
+    :hover{
+      cursor: pointer;
+    }
+}
 `
